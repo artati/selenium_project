@@ -1,0 +1,98 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 6,
+        "name": "Single Input Field",
+        "description": "",
+        "id": "input-forms;single-input-field",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 7928491385,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "the page url",
+            "match": {
+              "location": "InputForms_Steps.the_page_url()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 272851875,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I fill the field \"Enter Message\": \"First Test\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Enter Message",
+                  "offset": 18
+                },
+                {
+                  "val": "First Test",
+                  "offset": 35
+                }
+              ],
+              "location": "InputForms_Steps.i_fill_the_field(String,String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 93742882,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I press \"Show Message\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Show Message",
+                  "offset": 9
+                }
+              ],
+              "location": "InputForms_Steps.i_press_button(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 59947714,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I see my message displayed \"First Test\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "First Test",
+                  "offset": 28
+                }
+              ],
+              "location": "InputForms_Steps.i_see_my_message_displayed(String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Input Forms",
+    "description": "As an user\r\nI want to test all the input forms",
+    "id": "input-forms",
+    "keyword": "Feature",
+    "uri": "InputForms.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@LoginProfile"
+      }
+    ]
+  }
+]

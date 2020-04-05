@@ -22,6 +22,7 @@ public class InputForms {
     public InputForms(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver,this);
+        this.driver.manage().window().maximize();
     }
 
     public void enterUserMessage(String userMessage){

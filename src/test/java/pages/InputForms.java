@@ -19,6 +19,18 @@ public class InputForms {
     @FindBy(id = "display")
     public WebElement displayMyText;
 
+    @FindBy(id = "sum1")
+    public WebElement element_a;
+
+    @FindBy(id = "sum2")
+    public WebElement element_b;
+
+    @FindBy(xpath = "//button[contains(text(),'Get Total')]")
+    public WebElement btnGetTotal;
+
+    @FindBy(xpath = "//span[@id='displayvalue']")
+    public WebElement totalElement;
+
     public InputForms(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver,this);
@@ -33,4 +45,18 @@ public class InputForms {
         btnShowMessage.click();
     }
 
+    public void enterValue1(String a){ element_a.sendKeys(a);}
+    public void enterValue2(String b){ element_b.sendKeys(b);}
+    public void clickGetTotal(){ btnGetTotal.click();}
+
+    public int calculateTotal(String a, String b){
+        int a_int = Integer.parseInt(a);
+        int b_int = Integer.parseInt(b);
+        int total = a_int + b_int;
+        return total;
+    }
+
+    public int convertSumIntoInt(){
+        return Integer.parseInt(totalElement.getText());
+    }
 }

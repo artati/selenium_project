@@ -9,12 +9,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pages.InputForms;
 import static org.junit.Assert.*;
 
-public class InputForms_Steps {
+public class InputForms_SingleInputField_Steps {
     public WebDriver driver = new ChromeDriver();
     InputForms inputForm = new InputForms(driver);
     String txt = "TC_SingleInputField_"+ RandomStringUtils.randomAlphanumeric(2);
 
-    @Given("^the page url \"([^\"]*)\"$")
+    @Given("^the page url Single Input Field \"([^\"]*)\"$")
     public void the_page_url(String arg1) throws Throwable {
         driver.get(arg1);
         inputForm = new InputForms(driver);
@@ -35,5 +35,4 @@ public class InputForms_Steps {
         String my_element = inputForm.displayMyText.getText();
         assertEquals(my_element, txt);
     }
-
 }

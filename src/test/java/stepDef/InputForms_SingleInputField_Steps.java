@@ -1,4 +1,5 @@
 package stepDef;
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -17,7 +18,7 @@ public class InputForms_SingleInputField_Steps {
     @Given("^the page url Single Input Field \"([^\"]*)\"$")
     public void the_page_url(String arg1) throws Throwable {
         driver.get(arg1);
-        inputForm = new InputForms(driver);
+        //inputForm = new InputForms(driver);
     }
 
     @When("^I fill the field - Single Input Field$")
@@ -34,5 +35,10 @@ public class InputForms_SingleInputField_Steps {
     public void i_see_my_message_displayed() throws Throwable {
         String my_element = inputForm.displayMyText.getText();
         assertEquals(my_element, txt);
+    }
+
+    @After()
+    public void closeBrowser() {
+        driver.quit();
     }
 }

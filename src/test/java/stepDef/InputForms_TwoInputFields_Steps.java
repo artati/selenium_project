@@ -1,4 +1,5 @@
 package stepDef;
+import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -35,7 +36,13 @@ public class InputForms_TwoInputFields_Steps {
     public void the_sum_is(String arg1) throws Throwable {
         int sum_displayed = inputForm.convertSumIntoInt();
         int sum_feature = Integer.parseInt(arg1);
-        assertEquals(sum_displayed, sum_feature, calculateSum);
+        assertEquals(sum_feature, sum_displayed);
+        assertEquals(sum_feature, calculateSum);
+    }
+
+    @After()
+    public void closeBrowser() {
+        driver.quit();
     }
 
 }

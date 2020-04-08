@@ -1,24 +1,17 @@
 package stepDef;
-
-import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import helper.Setup;
 import pages.DatePickers;
-
-import static org.junit.Assert.assertEquals;
 
 public class DatePickers_DateRangeExample_Steps {
 
-    public WebDriver driver = new ChromeDriver();
-    DatePickers datePickers = new DatePickers(driver);
-
+    DatePickers datePickers = new DatePickers();
 
     @Given("^the page url Date Pickers Range Example \"([^\"]*)\"$")
     public void the_page_url_Date_Pickers_Example(String arg1) throws Throwable {
-        driver.get(arg1);
+        Setup.init(arg1);
     }
 
     @When("^I select an Start Date$")
@@ -35,9 +28,7 @@ public class DatePickers_DateRangeExample_Steps {
 
     @Then("^The Selected Dates are Displayed$")
     public void the_Selected_Dates_are_Displayed() throws Throwable {
+        Setup.closeSession();
     }
-    @After()
-    public void closeBrowser() {
-        driver.quit();
-    }
+
 }

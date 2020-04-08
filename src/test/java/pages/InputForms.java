@@ -1,14 +1,17 @@
 package pages;
+import helper.Setup;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class InputForms {
-    private WebDriver driver;
+public class InputForms extends Setup {
+
+    public InputForms() {
+       driver = new ChromeDriver();
+       PageFactory.initElements(driver, this);
+    }
 
     @FindBy(id = "user-message")
     public WebElement txtUserMessage;
@@ -31,16 +34,9 @@ public class InputForms {
     @FindBy(xpath = "//span[@id='displayvalue']")
     public WebElement totalElement;
 
-    public InputForms(WebDriver driver){
-        this.driver=driver;
-        PageFactory.initElements(driver,this);
-        this.driver.manage().window().maximize();
-    }
-
     public void enterUserMessage(String userMessage){
         txtUserMessage.sendKeys(userMessage);
     }
-
     public void clickShowMessage(){
         btnShowMessage.click();
     }

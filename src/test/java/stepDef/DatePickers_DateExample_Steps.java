@@ -1,23 +1,17 @@
 package stepDef;
-
-import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import helper.Setup;
 import pages.DatePickers;
-
 import static org.junit.Assert.assertEquals;
 
 public class DatePickers_DateExample_Steps {
-    public WebDriver driver = new ChromeDriver();
-    DatePickers datePickers = new DatePickers(driver);
-
+    DatePickers datePickers = new DatePickers();
 
     @Given("^the page url Date Pickers Example \"([^\"]*)\"$")
     public void the_page_url_Date_Pickers_Example(String arg1) throws Throwable {
-        driver.get(arg1);
+        Setup.init(arg1);
     }
 
     @When("^I select an Active Day from Calendar$")
@@ -43,9 +37,7 @@ public class DatePickers_DateExample_Steps {
         datePickers.clickDateTable();
         String my_element = datePickers.todayActiveDay.getText();
         assertEquals(my_element, datePickers.getCurrentDate());
+        Setup.closeSession();
     }
-    @After()
-    public void closeBrowser() {
-        driver.quit();
-    }
+
 }

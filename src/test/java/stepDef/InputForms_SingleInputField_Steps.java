@@ -1,28 +1,27 @@
 package stepDef;
-import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import helper.Setup;
 import pages.InputForms;
 import static org.junit.Assert.*;
 
 public class InputForms_SingleInputField_Steps {
-    public WebDriver driver = new ChromeDriver();
-    InputForms inputForm = new InputForms(driver);
+
+    public InputForms inputForm = new InputForms();
+
     String txt = "TC_SingleInputField_"+ RandomStringUtils.randomAlphanumeric(2);
 
     @Given("^the page url Single Input Field \"([^\"]*)\"$")
     public void the_page_url(String arg1) throws Throwable {
-        driver.get(arg1);
-        //inputForm = new InputForms(driver);
-    }
+        Setup.init(arg1);
+   }
 
     @When("^I fill the field - Single Input Field$")
     public void i_fill_the_field() throws Throwable {
+
         inputForm.enterUserMessage(txt);
     }
 
@@ -35,10 +34,6 @@ public class InputForms_SingleInputField_Steps {
     public void i_see_my_message_displayed() throws Throwable {
         String my_element = inputForm.displayMyText.getText();
         assertEquals(my_element, txt);
-    }
-
-    @After()
-    public void closeBrowser() {
-        driver.quit();
+        Setup.closeSession();
     }
 }

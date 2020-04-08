@@ -1,23 +1,27 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
+import helper.Setup;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DatePickers {
-    private WebDriver driver;
+public class DatePickers extends Setup {
 
+    public DatePickers() {
+        driver = new ChromeDriver();
+        PageFactory.initElements(driver,this);
+    }
     //All DatePickers Page Elements
     @FindBy(xpath = "//input[@placeholder='dd/mm/yyyy']")
     public WebElement dateTable;
 
     @FindBy(xpath = "//td[@class='today day']")
     public WebElement selectTodayDay;
-    ////td[@class='today active day']
 
     @FindBy(xpath = "//div[@class='datepicker-days']//th[@class='today'][contains(text(),'Today')]")
     public WebElement buttonToday;
@@ -41,11 +45,6 @@ public class DatePickers {
     public WebElement todayActiveDay;
 
     //All Actions with the DatePickers Page Elements
-    public DatePickers(WebDriver driver){
-        this.driver=driver;
-        PageFactory.initElements(driver,this);
-        this.driver.manage().window().maximize();
-    }
 
     public void clickDateTable(){
         dateTable.click();
